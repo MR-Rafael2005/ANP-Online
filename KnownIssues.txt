@@ -1,0 +1,11 @@
+Tarefas:
+-Cadastro []
+-Login []
+-Cargos
+-Pagina principal []
+-Anuncios []
+-Notificações(Por email tbm) []
+-Turmas []
+-Alunos []
+-RAC []
+-Ocorrencias []
