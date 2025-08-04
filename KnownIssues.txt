@@ -9,3 +9,16 @@ Tarefas:
 -Alunos []
 -RAC []
 -Ocorrencias []
+
+-Cores:
+Verde:
+#46e44c
+#3eca43
+#37b13b
+#2f9832
+#277f2a
+#1f6522
+#174c19
+#103311
+#081908
+#000000

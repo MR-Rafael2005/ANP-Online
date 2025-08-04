@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANP Online - Login</title>
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="text-light" style="height: 100vh; overflow: hidden; background-color: #174c19;">
+     <!-- NAVBAR -->
+    <div class="row">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="background-color: #1f6522 !important; text-decoration: none !important;">
+            <div class="container-fluid align-middle">
+                <a class="navbar-brand" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: xx-large;" href="../../index.html">
+                    <img src="../../assets/anpicont.png" alt="Logo" class="d-inline-block alingn-middle" style=" width: 1.25em; height: 1.25em; margin-right:8px;">
+                    <div class="d-inline-block align-middle text-white">
+                        ANP Online
+                    </div>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                
+                <div class="collapse navbar-collapse align-middle" id="navbarNavDropdown">
+                    <ul class="navbar-nav ms-lg-auto align-middle" style="font-size: x-large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                        <li class="nav-item">
+                            <a class="nav-link text-white disabled" href="#anuncios">Pagina de Login</a>
+                        </li>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    </div>
+    
+    <!-- MAIN CONTENT -->
+    <div class="cover-container d-flex p-3 mx-auto flex-column" style="background-color: #1f6522 !important; width: 30em; height: auto; margin-top: 20vh; border-radius: 10px;  border-color: #103311; border-style: solid; border-width: 2px;">
+        <form onsubmit="makeLogin(); return false;">
+            <div class="mb-3">
+                <label for="emailLogin" class="form-label">Email</label>
+                <input type="email" oninput="validEmail()" class="form-control" id="emailLogin" aria-describedby="emailLoginHelp" placeholder="Digite seu email" required>
+                <div id="emailError" class="form-text text-danger" style="display: none;">Email inválido.</div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="name" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="name" placeholder="Digite seu nome" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="passwordLogin" class="form-label">Senha</label>
+                <input type="password" oninput="validadeRePass()" class="form-control" id="passwordLogin" placeholder="Digite sua senha" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirmar Senha</label>
+                <input type="password" oninput="validadeRePass()" class="form-control" id="confirmPassword" placeholder="Confirme sua senha" required>
+                <div id="rePassError" class="form-text text-danger" style="display: none;">As senhas não coincidem.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="userArea" class="form-label text-white">Área de Atuação</label>
+                <select class="form-select" id="userArea" required>
+                    <option value="">Selecione uma área</option>
+                    <option value="Matemática">Matemática</option>
+                    <option value="Português">Português</option>
+                    <option value="História">História</option>
+                    <option value="Geografia">Geografia</option>
+                    <option value="Ciências">Ciências</option>
+                    <option value="Física">Física</option>
+                    <option value="Química">Química</option>
+                    <option value="Biologia">Biologia</option>
+                    <option value="Inglês">Inglês</option>
+                    <option value="Educação Física">Educação Física</option>
+                    <option value="Artes">Artes</option>
+                    <option value="Filosofia">Filosofia</option>
+                    <option value="Sociologia">Sociologia</option>
+                    <option value="Coordenação">Coordenação</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="userPhoto" class="form-label text-white">Foto de Perfil (Opcional)</label>
+                <input type="file" class="form-control" id="userPhoto" accept="image/*">
+                <div class="form-text text-light">Formatos aceitos: JPG, PNG, GIF</div>
+                
+                <!-- Preview da foto -->
+                <div class="mt-2 text-center">
+                    <img id="photoPreview" src="" alt="Preview" class="img-thumbnail" style="max-width: 150px; display: none;">
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between">    
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+    
+    
+    <!-- FIREBASE -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/12.0.0/firebase-app-compat.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore-compat.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/12.0.0/firebase-auth-compat.js"></script>
+    <script type="module" src="../../scripts/firebaseConfig.js"></script>
+    <!-- OPTIONAL (Put in <head>) -->
+    <!--
+    <script defer src="/__/firebase/12.0.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/12.0.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/12.0.0/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/12.0.0/firebaseConfig.js"></script>
+    -->
+    <script src="../../scripts/users/usersManager.js"></script>
+    <script src="../../scripts/loading.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

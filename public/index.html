@@ -1,3 +1,4 @@
+<!-- Pagina Base para todas -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -8,23 +9,103 @@
 
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .dropdown-menu .dropdown-item:hover,
+        .dropdown-menu .dropdown-item:focus {
+            background-color: #3eca43 !important;
+            color: #1f6522 !important;
+        }
+    </style>
 </head>
 
-<body>
+<body class="bg-dark text-light" style="height: 100vh; overflow: hidden;">
+    <!-- NAVBAR -->
+    <div class="row">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="background-color: #1f6522 !important; text-decoration: none !important;">
+            <div class="container-fluid align-middle">
+                <a class="navbar-brand" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: xx-large;" href="#">
+                    <img src="./assets/anpicont.png" alt="Logo" class="d-inline-block alingn-middle" style=" width: 1.25em; height: 1.25em; margin-right:8px;">
+                    <div class="d-inline-block align-middle text-white">
+                        ANP Online
+                    </div>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse align-middle" id="navbarNavDropdown">
+                    <ul class="navbar-nav ms-lg-auto align-middle" style="font-size: x-large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#anuncios">Anuncios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="pages/info/">Informações</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success px-4 ms-2 text-white" href="pages/users/" style="font-size: x-large;">Entrar</a>
+                        </li>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
-    <h1>ANP Online</h1>
+    <!-- MAIN CONTENT -->
+    <div class="cover-container d-flex h-100 w-100 p-3 mx-auto flex-column" style="background-color: #174c19 !important;">
+         <main role="main" class="align-middle text-center flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+            <h1 class="cover-heading">ANP Online</h1>
+            <p class="lead">Essa é uma pagina dedicada para ser um sistema online de ajuda aos professores e alunos da escola Agostinho Neres Portela.</p>
+            
+            <a href="#" type="button" class="btn btn-lg btn-success" data-bs-toggle="modal" data-bs-target="#mapModal">Ver Localização da Escola</a>
+            <br>
+            <!-- Adicionar futuramente -->
+            <a type="button" class="btn btn-lg btn-success disabled">Emitir Documentação(Indisponivel)</a>
+        </main>
 
+        <footer class="mastfoot mt-auto text-center" style="color: #9aa9b8;">
+                <p>Escola de Ensino Médio em Tempo Integral Agostinho Neres Portela 2025.</p>
+        </footer>
+    </div>
+
+    <!-- School Map Modal -->
+    <div class="modal" id="mapModal">
+        <div class="modal-dialog d-flex justify-content-center modal-xl">
+            <div class="modal-content" style="width: 100em; height: 50em;">
+                <!-- Modal Header -->
+                <div class="modal-header bg-success">
+                    <h4 class="modal-title text-white">Localização</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <!-- Modal body -->
+                <div class="modal-body" style="background-color: #1f6522; height: 40em;">
+                    <div class="d-flex justify-content-center">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4608.088163342961!2d-40.67188862438675!3d-3.8336574437179602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7eb2ada11fb17a1%3A0xeed1b110a1649e39!2sE.E.M%20Agostinho%20Neres%20Portela!5e1!3m2!1spt-BR!2sbr!4v1728328112605!5m2!1spt-BR!2sbr" width="100%" height="625em" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Modal footer -->
+                <div class="modal-footer bg-success">
+                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- FIREBASE -->
     <script type="module" src="https://www.gstatic.com/firebasejs/11.9.1/firebase-app-compat.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore-compat.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/11.9.1/firebase-auth-compat.js"></script>
     <script type="module" src="./scripts/firebaseConfig.js"></script>
-
-    <!-- GUARD -->
-    <!-- Qual script usar? 
-    <script type="module" src="./scripts/guard.js"></script>
-    <script type="module" src="./scripts/semiGuard.js"></script> 
+    <!-- OPTIONAL (Put in <head>) -->
+        <!--
+    <script defer src="/__/firebase/12.0.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/12.0.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/12.0.0/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/12.0.0/firebaseConfig.js"></script>
     -->
-
+    
     <!-- BOOTSTRAP -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>

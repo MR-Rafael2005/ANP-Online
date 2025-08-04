@@ -1,24 +1,7 @@
 /*
 --SCRIPT ANTIGO
+Esse é o script base provido por padrao pelo Firebase.
 <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyDg60qnVK7bPIAUpKqOGMz6DI4QysKZuGo",
-      authDomain: "anp-online-d3dfe.firebaseapp.com",
-      projectId: "anp-online-d3dfe",
-      storageBucket: "anp-online-d3dfe.firebasestorage.app",
-      messagingSenderId: "562052850412",
-      appId: "1:562052850412:web:5b3dc28eb74adf02ea3bc9",
-      measurementId: "G-Y0779X11EX"
-    };
-  
     //ATUAL
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -45,7 +28,8 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
-</script> */
+</script> 
+*/
 
 (function(){
  const firebaseConfig = {
