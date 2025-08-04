@@ -22,3 +22,7 @@ Verde:
 #103311
 #081908
 #000000
+
+O firebase não disponibiliza mais storage, fotos serão salvas em base64
+
+Usar Apache Cordova/PhoneGap para fazer o apk
