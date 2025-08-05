@@ -26,5 +26,6 @@ document.getElementById('fotoForm').addEventListener('submit', async function(e)
 
     alert("Imagem enviada para o Firestore!");
   };
+  
   reader.readAsDataURL(file);
 });
