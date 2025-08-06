@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANP Online - Login</title>
+    <title>ANP Online - Cadastro</title>
 
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
                 <div class="collapse navbar-collapse align-middle" id="navbarNavDropdown">
                     <ul class="navbar-nav ms-lg-auto align-middle" style="font-size: x-large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
                         <li class="nav-item">
-                            <a class="nav-link text-white disabled" href="#anuncios">Pagina de Login</a>
+                            <a class="nav-link text-white disabled" href="#anuncios">Pagina de Cadastro</a>
                         </li>
                     </li>
                 </ul>
@@ -41,26 +41,28 @@
     
     <!-- MAIN CONTENT -->
     <div class="cover-container d-flex p-3 mx-auto flex-column" style="background-color: #1f6522 !important; width: 30em; height: auto; margin-top: 20vh; border-radius: 10px;  border-color: #103311; border-style: solid; border-width: 2px;">
-        <form onsubmit="makeLogin(); return false;">
+        <form onsubmit="createUser(); return false;">
             <div class="mb-3">
                 <label for="emailLogin" class="form-label">Email</label>
-                <input type="email" oninput="validEmail()" class="form-control" id="emailLogin" aria-describedby="emailLoginHelp" placeholder="Digite seu email" required>
+                <input type="email" onchange="validateForm()" oninput="validEmail()" class="form-control" id="emailLogin" aria-describedby="emailLoginHelp" placeholder="Digite seu email" required>
                 <div id="emailError" class="form-text text-danger" style="display: none;">Email inválido.</div>
             </div>
             
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="name" placeholder="Digite seu nome" required>
+                <input type="text" onchange="validateForm()" oninput="validName()" class="form-control" id="username" placeholder="Digite seu nome" required>
+                <div id="nameError" class="form-text text-danger" style="display: none;">Nome inválido.</div>
             </div>
 
             <div class="mb-3">
                 <label for="passwordLogin" class="form-label">Senha</label>
-                <input type="password" oninput="validadeRePass()" class="form-control" id="passwordLogin" placeholder="Digite sua senha" required>
+                <input type="password" onchange="validateForm()" oninput="validatePassword()" class="form-control" id="passwordLogin" placeholder="Digite sua senha" required>
+                <div id="passwordError" class="form-text text-danger" style="display: none;">A senha deve ter pelo menos 6 caracteres.</div>
             </div>
 
             <div class="mb-3">
                 <label for="confirmPassword" class="form-label">Confirmar Senha</label>
-                <input type="password" oninput="validadeRePass()" class="form-control" id="confirmPassword" placeholder="Confirme sua senha" required>
+                <input type="password" onchange="validateForm()" oninput="validateRePass()" class="form-control" id="confirmPassword" placeholder="Confirme sua senha" required>
                 <div id="rePassError" class="form-text text-danger" style="display: none;">As senhas não coincidem.</div>
             </div>
 
@@ -88,8 +90,9 @@
 
             <div class="mb-3">
                 <label for="userPhoto" class="form-label text-white">Foto de Perfil (Opcional)</label>
-                <input type="file" class="form-control" id="userPhoto" accept="image/*">
-                <div class="form-text text-light">Formatos aceitos: JPG, PNG, GIF</div>
+                <input type="file" onchange="photoChange()" class="form-control" id="userPhoto" accept="image/*">
+                <div class="form-text text-light">Formatos aceitos: JPG, JPEG e PNG</div>
+                <div id="photoError" class="form-text text-danger" style="display: none;">Formato de foto inválido. Use JPG, JPEG ou PNG.</div>
                 
                 <!-- Preview da foto -->
                 <div class="mt-2 text-center">
@@ -98,7 +101,8 @@
             </div>
 
             <div class="d-flex justify-content-between">    
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='../../index.html'">Voltar</button>
+                <button type="submit" id="submitButton" class="btn btn-primary" disabled="true">Cadastrar</button>
             </div>
         </form>
     </div>
@@ -116,8 +120,9 @@
     <script defer src="/__/firebase/12.0.0/firebase-app-compat.js"></script>
     <script defer src="/__/firebase/12.0.0/firebaseConfig.js"></script>
     -->
-    <script src="../../scripts/users/usersManager.js"></script>
+    <!-- <script src="../../scripts/users/usersManager.js"></script> -->
     <script src="../../scripts/loading.js"></script>
+    <script src="../../scripts/users/createUser.js"></script>
 
     <!-- BOOTSTRAP -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
