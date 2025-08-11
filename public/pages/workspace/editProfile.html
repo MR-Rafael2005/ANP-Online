@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
 
@@ -167,7 +167,7 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
@@ -192,7 +192,7 @@
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
                                         <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
+                                            placeholder="Buscar por..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
@@ -336,20 +336,20 @@
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
+                                    Perfil
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
+                                    Configurações
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
+                                    Registro de Atividades
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    Sair
                                 </a>
                             </div>
                         </li>
@@ -363,8 +363,70 @@
                 <div class="container-fluid text-white">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4">Em branco no momento.</h1>
+                     <form onsubmit="createUser(); return false;">
+                        <div class="mb-3">
+                            <label for="emailLogin" class="form-label">Email</label>
+                            <input type="email" onchange="validateForm()" oninput="validEmail()" class="form-control" id="emailLogin" aria-describedby="emailLoginHelp" placeholder="Digite seu email" required>
+                            <div id="emailError" class="form-text text-danger" style="display: none;">Email inválido.</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nome</label>
+                            <input type="text" onchange="validateForm()" oninput="validName()" class="form-control" id="username" placeholder="Digite seu nome" required>
+                            <div id="nameError" class="form-text text-danger" style="display: none;">Nome inválido.</div>
+                        </div>
 
+                        <div class="mb-3">
+                            <label for="passwordLogin" class="form-label">Senha</label>
+                            <input type="password" onchange="validateForm()" oninput="validatePassword()" class="form-control" id="passwordLogin" placeholder="Digite sua senha" required>
+                            <div id="passwordError" class="form-text text-danger" style="display: none;">A senha deve ter pelo menos 6 caracteres.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirmar Senha</label>
+                            <input type="password" onchange="validateForm()" oninput="validateRePass()" class="form-control" id="confirmPassword" placeholder="Confirme sua senha" required>
+                            <div id="rePassError" class="form-text text-danger" style="display: none;">As senhas não coincidem.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="userArea" class="form-label text-white">Área de Atuação</label>
+                            <select class="form-select" id="userArea" required>
+                                <option value="">Selecione uma área</option>
+                                <option value="Matemática">Matemática</option>
+                                <option value="Português">Português</option>
+                                <option value="História">História</option>
+                                <option value="Geografia">Geografia</option>
+                                <option value="Ciências">Ciências</option>
+                                <option value="Física">Física</option>
+                                <option value="Química">Química</option>
+                                <option value="Biologia">Biologia</option>
+                                <option value="Inglês">Inglês</option>
+                                <option value="Educação Física">Educação Física</option>
+                                <option value="Artes">Artes</option>
+                                <option value="Filosofia">Filosofia</option>
+                                <option value="Sociologia">Sociologia</option>
+                                <option value="Coordenação">Coordenação</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="userPhoto" class="form-label text-white">Foto de Perfil (Opcional)</label>
+                            <input type="file" onchange="photoChange()" class="form-control" id="userPhoto" accept="image/*">
+                            <div class="form-text text-light">Formatos aceitos: JPG, JPEG e PNG</div>
+                            <div id="photoError" class="form-text text-danger" style="display: none;">Formato de foto inválido. Use JPG, JPEG ou PNG.</div>
+                            
+                            <!-- Preview da foto -->
+                            <div class="mt-2 text-center">
+                                <img id="photoPreview" src="" alt="Preview" class="img-thumbnail" style="max-width: 150px; display: none;">
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between">    
+                            <button type="button" class="btn btn-secondary" onclick="window.location.href='./'">Voltar</button>
+                            <button type="submit" id="submitButton" class="btn btn-primary" disabled="true">Editar</button>
+                        </div>
+                    </form>
                 </div>
                 <!-- /.container-fluid -->
 
