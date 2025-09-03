@@ -26,3 +26,5 @@ Verde:
 O firebase não disponibiliza mais storage, fotos serão salvas em base64
 
 Usar Apache Cordova/PhoneGap para fazer o apk
+
+EMAIL FINAL: 23247754@prof.ce.gov.br (Atualmente esta no meu email pessoal)
