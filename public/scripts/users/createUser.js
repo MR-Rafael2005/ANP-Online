@@ -187,6 +187,14 @@ function photoChange()
 
 function validateForm() 
 {
+    //Requisitos de validação
+    /*
+    - Email válido
+    - Nome com pelo menos 3 caracteres
+    - Senha com pelo menos 6 caracteres
+    - Senha e confirmação de senha devem coincidir
+    - Foto do usuário deve ser um arquivo de imagem (jpg, jpeg, png) 
+    */
     const isValidEmail = validEmail();
     const isValidName = validName();
     const isValidPassword = validatePassword();
@@ -211,6 +219,23 @@ function createUser()
         return false;
     }
 
+    firebase.auth().createUserWithEmailAndPassword(form.email().value, form.password().value)
+    .then((userCredential) => {
+        /*
+        User credential:
+
+        */ 
+        CreateDocWithId("usersData", userCredential.id, {
+            
+        })
+    })
+    .catch((error) => {
+        console.error("Erro ao criar usuário:", error);
+        alert("Erro ao criar usuário: " + error.message);
+    });
+
+    /*
+
     const photoFile = convertToBase64(form.userPhoto().files[0]);
     if (!photoFile) 
     {
@@ -225,7 +250,6 @@ function createUser()
         confirmPassword: form.confirmPassword().value,
         userPhoto: photoFile
     };
-/*
     firebase.auth().createUserWithEmailAndPassword(userData.email, userData.password)
         .then((userCredential) => {
             // User created successfully
@@ -237,10 +261,10 @@ function createUser()
             console.error("Erro ao criar usuário:", error);
             alert("Erro ao criar usuário: " + error.message);
         });
-*/
-
-    console.log("Dados do usuário:", userData);
-    alert("Usuário criado com sucesso!(Simulação)");
+        
+        console.log("Dados do usuário:", userData);
+        alert("Usuário criado com sucesso!(Simulação)");
+        */
     return true;
 }
 

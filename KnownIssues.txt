@@ -23,6 +23,11 @@ Verde:
 #081908
 #000000
 
+Cargos:
+-Administrador
+-Usuario
+-Ingressante
+
 O firebase não disponibiliza mais storage, fotos serão salvas em base64
 
 Usar Apache Cordova/PhoneGap para fazer o apk

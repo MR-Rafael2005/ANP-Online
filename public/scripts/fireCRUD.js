@@ -16,7 +16,13 @@ Banco de Dados
 // #region Firestore Create Operations
 async function CreateDoc(collection, data)
 {
-    return await firebase.firestore().collection(collection).add(data);
+    alert("fireCRUD CreateDoc called");
+    //return await firebase.firestore().collection(collection).add(data);
+}
+
+async function CreateDocWithId(collection, docId, data)
+{
+    return await firebase.firestore().collection(collection).doc(docId).set(data);
 }
 
 async function CreateDocs(collection, docs)
