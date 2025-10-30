@@ -5,6 +5,8 @@ const form = {
     confirmPassword: () => document.getElementById('confirmPassword'),
     userPhoto: () => document.getElementById('userPhoto'),
     submitButton: () => document.getElementById('submitButton'),
+    userRole: () => document.getElementById('userRole'),
+    userArea: () => document.getElementById('userArea')
 }
 
 function validEmail() 
@@ -211,13 +213,36 @@ function validateForm()
     }
 }
 
-function createUser()
+async function createUser() 
 {
+    showLoading();
+
     if (!validateForm()) 
     {
         alert("Por favor, corrija os erros antes de enviar o formulário.");
         return false;
     }
+
+    try 
+    {
+        const photo64 = form.userPhoto().files[0] ? await convertToBase64(form.userPhoto().files[0]) : null;
+        
+        const userData = {
+            email: form.email().value,
+            password: form.password().value,
+            username: form.username().value,
+            userRole: form.userRole().value,
+            userPhoto: photo64 ? photo64.base64 : null,
+            userArea: form.userArea().value
+        };
+        
+        console.log("Dados do usuário:", userData);
+    } catch (error) {
+        console.error("Erro ao processar a foto do usuário:", error);
+        alert("Erro ao processar a foto do usuário: " + error.message);
+    }
+
+    return;
 
     firebase.auth().createUserWithEmailAndPassword(form.email().value, form.password().value)
     .then((userCredential) => {
@@ -225,7 +250,7 @@ function createUser()
         User credential:
 
         */ 
-        CreateDocWithId("usersData", userCredential.id, {
+        CreateDocWithId("usersData", userCredential.user.uid, {
             
         })
     })
@@ -266,155 +291,4 @@ function createUser()
         alert("Usuário criado com sucesso!(Simulação)");
         */
     return true;
-}
-
-function registerUser(userData)
-{
-    /*
-    Modelo de dados do usuário
-    {  
-        username: "Nome do usuário",
-        email: "Email do usuário",
-        password: "Senha do usuário",
-        userPhoto: "Foto do usuário",
-        userRole: "Função do usuário (ex: admin, user)"
-        userId: "ID do usuário (gerado pelo Firebase)"
-    }
-    */ 
-
-    const db = firebase.firestore();
-
-}
-
-/*
-function convertToBase64(file) 
-{
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-        reader.readAsDataURL(file);
-    });
-}
-*/
-
-function convertToBase64(file, options = {}) {
-    return new Promise((resolve, reject) => {
-        // Image Config
-        const config = {
-            maxWidth: 800,
-            maxHeight: 600,
-            quality: 0.8,
-            maxFileSize: 500 * 1024, // 500KB 
-            outputFormat: 'image/jpeg',
-            ...options
-        };
-
-        // Verificar se o arquivo é muito grande para ser processado (10x o tamanho máximo permitido)
-        if (file.size > config.maxFileSize * 10) 
-        { 
-            reject(new Error(`Arquivo muito grande. Máximo permitido: ${(config.maxFileSize / 1024).toFixed(0)}KB`));
-            return;
-        }
-
-        // Verificar se é uma imagem
-        if (!file.type.startsWith('image/')) {
-            reject(new Error('Arquivo deve ser uma imagem'));
-            return;
-        }
-
-        const reader = new FileReader();
-        
-        //Ao carregar o reader...
-        reader.onload = (e) => {
-            const img = new Image();
-            
-            //Ao carregar a imagem...
-            img.onload = () => {
-                try {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    
-                    // Calcular novas dimensões mantendo a proporção
-                    let { width, height } = img;
-                    
-                    if (width > config.maxWidth || height > config.maxHeight) 
-                    {
-                        const aspectRatio = width / height;
-                        
-                        if (width > height) {
-                            width = config.maxWidth;
-                            height = width / aspectRatio;
-                            
-                            if (height > config.maxHeight) {
-                                height = config.maxHeight;
-                                width = height * aspectRatio;
-                            }
-                        } else {
-                            height = config.maxHeight;
-                            width = height * aspectRatio;
-                            
-                            if (width > config.maxWidth) {
-                                width = config.maxWidth;
-                                height = width / aspectRatio;
-                            }
-                        }
-                    }
-                    
-                    // Definir tamanho do canvas
-                    canvas.width = width;
-                    canvas.height = height;
-                    
-                    // Melhorar qualidade da renderização
-                    ctx.imageSmoothingEnabled = true;
-                    ctx.imageSmoothingQuality = 'high';
-                    
-                    // Desenhar imagem redimensionada
-                    ctx.drawImage(img, 0, 0, width, height);
-                    
-                    // Converter para Base64 com qualidade especificada
-                    let base64Result = canvas.toDataURL(config.outputFormat, config.quality);
-                    
-                    // Verificar se ainda está muito grande e reduzir qualidade se necessário
-                    let attempts = 0;
-                    while (base64Result.length > config.maxFileSize * 1.37 && attempts < 5) { // 1.37 é o fator de conversão base64
-                        config.quality -= 0.1;
-                        if (config.quality < 0.1) config.quality = 0.1;
-                        
-                        base64Result = canvas.toDataURL(config.outputFormat, config.quality);
-                        attempts++;
-                    }
-                    
-                    // Verificar tamanho final
-                    const finalSizeKB = (base64Result.length * 0.75) / 1024; // Aproximação do tamanho real
-                    
-                    resolve({
-                        base64: base64Result,
-                        originalSize: file.size,
-                        finalSize: Math.round(finalSizeKB * 1024),
-                        finalSizeKB: Math.round(finalSizeKB),
-                        originalDimensions: { width: img.width, height: img.height },
-                        finalDimensions: { width, height },
-                        compressionRatio: Math.round((1 - (finalSizeKB * 1024) / file.size) * 100),
-                        quality: config.quality
-                    });
-                    
-                } catch (error) {
-                    reject(new Error('Erro ao processar imagem: ' + error.message));
-                }
-            };
-            
-            img.onerror = () => {
-                reject(new Error('Erro ao carregar imagem'));
-            };
-            
-            img.src = e.target.result;
-        };
-        
-        reader.onerror = (error) => {
-            reject(new Error('Erro ao ler arquivo: ' + error.message));
-        };
-        
-        reader.readAsDataURL(file);
-    });
 }
