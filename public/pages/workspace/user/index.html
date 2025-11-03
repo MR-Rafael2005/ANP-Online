@@ -28,7 +28,7 @@
 
             <!-- Sidebar - Tittle -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <img class="sidebar-brand-icon" src="../../assets/anpicont.png" alt="Logo" style="width: auto; height: auto;">
+                <img class="sidebar-brand-icon" src="/assets/anpicont.png" alt="Logo" style="width: auto; height: auto;">
                 <div class="sidebar-brand-text mx-3">ANP ONLINE<sup>1.0</sup></div>
             </a>
 
@@ -358,83 +358,71 @@
 
                 </nav>
                 <!-- End of Topbar -->
+               
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid text-white">
+            <div class="cover-container d-flex p-3 mx-auto flex-column flex-grow-1" style="background-color: #1f6522 !important; width: 60em; height: auto; margin-top: 5vh; border-radius: 10px;  border-color: #103311; border-style: solid; border-width: 2px;">
+                <!-- Page Heading -->
+                <form onsubmit="createUser(); return false;">
+                    <h1 class="h3 mb-4 text-white">Perfil</h1>
+                    <div class="mb-3">
+                        <label for="emailLogin" class="form-label">Email</label>
+                        <input type="email" onchange="validateForm()" oninput="validEmail()" class="form-control" id="emailLogin" aria-describedby="emailLoginHelp" placeholder="Digite seu email" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nome</label>
+                        <input type="text" onchange="validateForm()" oninput="validName()" class="form-control" id="username" placeholder="Digite seu nome" required>
+                    </div>
 
-                    <!-- Page Heading -->
-                     <form onsubmit="createUser(); return false;">
-                        <div class="mb-3">
-                            <label for="emailLogin" class="form-label">Email</label>
-                            <input type="email" onchange="validateForm()" oninput="validEmail()" class="form-control" id="emailLogin" aria-describedby="emailLoginHelp" placeholder="Digite seu email" required>
-                            <div id="emailError" class="form-text text-danger" style="display: none;">Email inválido.</div>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Nome</label>
-                            <input type="text" onchange="validateForm()" oninput="validName()" class="form-control" id="username" placeholder="Digite seu nome" required>
-                            <div id="nameError" class="form-text text-danger" style="display: none;">Nome inválido.</div>
-                        </div>
+                    <div class="mb-3">
+                        <label for="passwordLogin" class="form-label">Senha</label>
+                        <input type="password" onchange="validateForm()" oninput="validatePassword()" class="form-control" id="passwordLogin" placeholder="Digite sua senha" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirmar Senha</label>
+                        <input type="password" onchange="validateForm()" oninput="validateRePass()" class="form-control" id="confirmPassword" placeholder="Confirme sua senha" required>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="passwordLogin" class="form-label">Senha</label>
-                            <input type="password" onchange="validateForm()" oninput="validatePassword()" class="form-control" id="passwordLogin" placeholder="Digite sua senha" required>
-                            <div id="passwordError" class="form-text text-danger" style="display: none;">A senha deve ter pelo menos 6 caracteres.</div>
-                        </div>
+                    <div class="mb-3">
+                        <label for="userArea" class="form-label text-white">Área de Atuação</label>
+                        <select class="form-select" id="userArea" >
+                            <option value="">Selecione uma área</option>
+                            <option value="Matemática">Matemática</option>
+                            <option value="Português">Português</option>
+                            <option value="História">História</option>
+                            <option value="Geografia">Geografia</option>
+                            <option value="Ciências">Ciências</option>
+                            <option value="Física">Física</option>
+                            <option value="Química">Química</option>
+                            <option value="Biologia">Biologia</option>
+                            <option value="Inglês">Inglês</option>
+                            <option value="Educação Física">Educação Física</option>
+                            <option value="Artes">Artes</option>
+                            <option value="Filosofia">Filosofia</option>
+                            <option value="Sociologia">Sociologia</option>
+                            <option value="Coordenação">Coordenação</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="confirmPassword" class="form-label">Confirmar Senha</label>
-                            <input type="password" onchange="validateForm()" oninput="validateRePass()" class="form-control" id="confirmPassword" placeholder="Confirme sua senha" required>
-                            <div id="rePassError" class="form-text text-danger" style="display: none;">As senhas não coincidem.</div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="userArea" class="form-label text-white">Área de Atuação</label>
-                            <select class="form-select" id="userArea" required>
-                                <option value="">Selecione uma área</option>
-                                <option value="Matemática">Matemática</option>
-                                <option value="Português">Português</option>
-                                <option value="História">História</option>
-                                <option value="Geografia">Geografia</option>
-                                <option value="Ciências">Ciências</option>
-                                <option value="Física">Física</option>
-                                <option value="Química">Química</option>
-                                <option value="Biologia">Biologia</option>
-                                <option value="Inglês">Inglês</option>
-                                <option value="Educação Física">Educação Física</option>
-                                <option value="Artes">Artes</option>
-                                <option value="Filosofia">Filosofia</option>
-                                <option value="Sociologia">Sociologia</option>
-                                <option value="Coordenação">Coordenação</option>
-                                <option value="Outro">Outro</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="userPhoto" class="form-label text-white">Foto de Perfil (Opcional)</label>
-                            <input type="file" onchange="photoChange()" class="form-control" id="userPhoto" accept="image/*">
-                            <div class="form-text text-light">Formatos aceitos: JPG, JPEG e PNG</div>
-                            <div id="photoError" class="form-text text-danger" style="display: none;">Formato de foto inválido. Use JPG, JPEG ou PNG.</div>
-                            
-                            <!-- Preview da foto -->
-                            <div class="mt-2 text-center">
-                                <img id="photoPreview" src="" alt="Preview" class="img-thumbnail" style="max-width: 150px; display: none;">
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between">    
-                            <button type="button" class="btn btn-secondary" onclick="window.location.href='./'">Voltar</button>
-                            <button type="submit" id="submitButton" class="btn btn-primary" disabled="true">Editar</button>
-                        </div>
-                    </form>
-                </div>
+                    <div class="mb-3">
+                        <img id="profilePreview" src="/assets/userDefaultW.png" alt="Pré-visualização do Perfil" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 2px solid #103311;">
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">    
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='./'">Voltar</button>
+                        <button type="submit" id="submitButton" class="btn btn-primary" disabled="true">Editar</button>
+                    </div>
+                </form>
+            </div>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer" style="background-color: #174c19;">
+            <footer class="sticky-footer mt-auto" style="background-color: #174c19;">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>MrRafael &copy; Agostinho Neres Portela 2025</span>

@@ -44,9 +44,9 @@ async function GetCollection(collection)
     return snapshot.docs.map(doc => doc.data());
 }
 
-async function GetDocByID(docId)
+async function GetDocByID(collection, docId)
 {
-    const doc = await firebase.firestore().doc(docId).get();
+    const doc = await firebase.firestore().collection(collection).doc(docId).get();
     return doc.data();
 }
 

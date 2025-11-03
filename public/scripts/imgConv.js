@@ -118,3 +118,26 @@ function convertToBase64(file, options = {}) {
         reader.readAsDataURL(file);
     });
 }
+
+//Sem uso ate agora
+function convertToBlob(base64String) {
+    return new Promise((resolve, reject) => {
+        try {
+            const parts = base64String.split(',');
+            const mimeMatch = parts[0].match(/data:([^;]+);/);
+            const mimeType = mimeMatch ? mimeMatch[1] : 'application/octet-stream';
+            const binaryString = atob(parts[1]);
+            const bytes = new Uint8Array(binaryString.length);
+            
+            for (let i = 0; i < binaryString.length; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            
+            const blob = new Blob([bytes], { type: mimeType });
+            resolve(blob);
+            
+        } catch (error) {
+            reject(new Error('Erro ao converter Base64: ' + error.message));
+        }
+    });
+}

@@ -3,5 +3,6 @@ function loginOut(){
         window.location.href = "/";
     }).catch((error) => {
         console.error("Error signing out: ", error);
+        alert("Erro ao sair.\nDetalhes: " + error.message);
     });
 }

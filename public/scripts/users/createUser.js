@@ -81,7 +81,7 @@ function validatePassword()
             return false;
         }
     }
-    console.log("Password length: ", password.length);
+
     if (password.length < 6) 
     {
         if (document.getElementById("passwordError")) 
@@ -223,6 +223,7 @@ async function createUser()
         return false;
     }
 
+    /* Teste de dados
     try 
     {
         const photo64 = form.userPhoto().files[0] ? await convertToBase64(form.userPhoto().files[0]) : null;
@@ -241,54 +242,67 @@ async function createUser()
         console.error("Erro ao processar a foto do usuário:", error);
         alert("Erro ao processar a foto do usuário: " + error.message);
     }
-
-    return;
-
-    firebase.auth().createUserWithEmailAndPassword(form.email().value, form.password().value)
-    .then((userCredential) => {
-        /*
-        User credential:
-
-        */ 
-        CreateDocWithId("usersData", userCredential.user.uid, {
-            
-        })
-    })
-    .catch((error) => {
-        console.error("Erro ao criar usuário:", error);
-        alert("Erro ao criar usuário: " + error.message);
-    });
-
-    /*
-
-    const photoFile = convertToBase64(form.userPhoto().files[0]);
-    if (!photoFile) 
+    */
+    let photo64 = null;
+    try 
     {
-        alert("Erro ao processar a foto do usuário.");
-        return false;
+        photo64 = form.userPhoto().files[0] ? await convertToBase64(form.userPhoto().files[0]) : null;
+    } catch (error) {
+        console.error("Erro ao processar a foto do usuário:", error);
+        alert("Erro ao processar a foto do usuário, tente outra imagem.\n Details:" + error.message);
+        hideLoading();
+        return;
     }
 
-    const userData = {
-        username: form.username().value,
-        email: form.email().value,
-        password: form.password().value,
-        confirmPassword: form.confirmPassword().value,
-        userPhoto: photoFile
-    };
-    firebase.auth().createUserWithEmailAndPassword(userData.email, userData.password)
-        .then((userCredential) => {
-            // User created successfully
-            const user = userCredential.user;
-            console.log("Usuário criado com sucesso:", user);
-            // Aqui você pode adicionar lógica para salvar os dados adicionais do usuário no Firestore ou em outro lugar
-        })
-        .catch((error) => {
-            console.error("Erro ao criar usuário:", error);
-            alert("Erro ao criar usuário: " + error.message);
-        });
+    firebase.auth().createUserWithEmailAndPassword(form.email().value, form.password().value)
+    .then(async (userCredential) => {
         
-        console.log("Dados do usuário:", userData);
-        alert("Usuário criado com sucesso!(Simulação)");
+        /* User credential:
+            uid
+            email
+            emailVerified
+            isAnonymous
+            metadata
+            phoneNumber
+            photoURL
+            providerData
+            refreshToken
+            tenantId
         */
-    return true;
+
+        try{
+            // Salvar dados adicionais do usuário no Firestore
+            await CreateDocWithId("users", userCredential.user.uid, {
+                username: form.username().value,
+                email: form.email().value,
+                userRole: form.userRole().value,
+                userPhoto: photo64 ? photo64.base64 : null,
+                userArea: form.userArea().value
+            });
+
+            alert("Usuário criado com sucesso!");
+            hideLoading();
+            window.location.href = "/pages/workspace/index.html";
+        } catch (error) {
+            console.error("Erro ao salvar dados do usuário no Firestore:", error);
+            
+            // REVERTER: Excluir usuário do Firebase Auth
+            try {
+                await userCredential.user.delete();
+                console.log("Usuário removido do Auth devido ao erro no Firestore");
+                alert("Erro ao criar conta. Tente novamente.\nDetalhes: " + error.message);
+            } catch (deleteError) {
+                console.error("Erro crítico!!!: Não foi possível reverter usuário:", deleteError);
+                alert("Erro crítico na criação da conta. Entre em contato com o suporte.");
+            }
+            
+            hideLoading();
+        }
+    }).catch((error) => {
+        console.error("Erro ao criar usuário:", error);
+        alert("Erro ao criar usuário: " + error.message);
+        hideLoading();
+        return;
+    });
+
 }

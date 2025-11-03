@@ -1,7 +1,6 @@
 Tarefas:
--Cadastro []
+-Cadastro [X]
 -Login []
--Cargos
 -Pagina principal []
 -Anuncios []
 -Notificações(Por email tbm) []
@@ -28,8 +27,26 @@ Cargos:
 -Usuario
 -Ingressante
 
+Database:
+-users
+
 O firebase não disponibiliza mais storage, fotos serão salvas em base64
 
 Usar Apache Cordova/PhoneGap para fazer o apk
 
 EMAIL FINAL: 23247754@prof.ce.gov.br (Atualmente esta no meu email pessoal)
+
+
+FIREBASE CLI:
+
+# Deploy completo (hosting + firestore rules + functions)
+firebase deploy
+
+# Deploy apenas hosting
+firebase deploy --only hosting
+
+# Deploy apenas regras do Firestore
+firebase deploy --only firestore:rules
+
+# Deploy apenas índices do Firestore
+firebase deploy --only firestore:indexes
