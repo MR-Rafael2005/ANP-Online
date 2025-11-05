@@ -2,8 +2,21 @@
 firebase.auth().onAuthStateChanged(user => {
   if (user) 
   {
-    window.location.href = "/pages/workspace/";
+    const cachedData = getCachedUserData(user.uid);
+    if (cachedData)
+    {
+      window.location.href = "/pages/workspace/";
+    }
   } else {
-    document.getElementById('loading').style.display = 'none';
+    hideLoading();
   }
 });
+
+function getCachedUserData(userId)
+{
+    if (userId) 
+    {
+        const data = localStorage.getItem(`user_${userId}`);
+        return data ? JSON.parse(data) : null;
+    }
+}
