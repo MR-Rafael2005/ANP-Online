@@ -29,7 +29,23 @@ function getCachedUserData(userId)
 
 function showElemets(userData) 
 {
-    if (userData.role == "Usuario") 
+    if (userData.role == "Administrador") 
+    {
+        let elements = document.getElementsByClassName("ingress-only");
+        
+        for (let i = 0; i < elements.length; i++) 
+        {
+            elements[i].style.display = "none";
+        }
+        
+        elements = document.getElementById("ingress-only");
+        
+        if (elements)
+        {
+            elements.style.display = "none";
+        }
+    } 
+    else if (userData.role == "Usuario") 
     {
         const elements = document.getElementsByClassName("admin-only");
         for (let i = 0; i < elements.length; i++) 
@@ -37,7 +53,7 @@ function showElemets(userData)
             elements[i].style.display = "block";
         }
     }  
-    else if (userData.role !== "Administrador") 
+    else 
     {
         let elements = document.getElementsByClassName("admin-only");
         for (let i = 0; i < elements.length; i++) 
@@ -50,5 +66,7 @@ function showElemets(userData)
         {
             elements[i].style.display = "none";
         }
+
+        alert("Você ainda não foi autorizado a acessar os recursos desta área. Por favor, entre em contato com o administrador para obter acesso.");
     }
 }
