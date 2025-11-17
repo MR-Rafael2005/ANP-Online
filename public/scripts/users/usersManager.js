@@ -8,7 +8,7 @@ function makeLogin() {
     firebase.auth().signInWithEmailAndPassword(userEmail, userPassword)
     .then((userCredential) => {
         console.log("Login successful:", userCredential);
-        window.location.href = "../workspace/index.html";
+        window.location.href = "/pages/workspace/index.html";
         hideLoading();
     }).catch((error) => {
         const errorCode = error.code;
@@ -31,7 +31,8 @@ function validEmail() {
     const email = document.getElementById("emailLogin").value;
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-    if (!re.test(email)) {
+    if (!re.test(email)) 
+    {
         if (document.getElementById("emailError")) 
         {
             document.getElementById("emailError").style.display = "block";
@@ -49,12 +50,12 @@ function validEmail() {
     return re.test(email);
 }
 
-function makeRecover() {
-    const userEmail = document.getElementById("emailLogin").value;
-    if (!validEmail()) {
-        return;
-    }
-}
+// function makeRecover() {
+//     const userEmail = document.getElementById("emailLogin").value;
+//     if (!validEmail()) {
+//         return;
+//     }
+// }
 
 // function validadeRePass()
 // {

@@ -5,5 +5,6 @@ firebase.auth().onAuthStateChanged(user => {
     window.location.href = "/pages/users/";
   } else {
     hideLoading();
+    console.log("Usuário autenticado:", user.uid);
   }
 });

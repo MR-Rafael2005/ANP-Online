@@ -4,12 +4,13 @@ firebase.auth().onAuthStateChanged(async (user) => {
   {
     try {
         let userData = getCachedUserData(user.uid);
-        if (userData) 
+        
+        if (!userData)     
         {
-            showElemets(userData);
-        } else {
             userData = await GetDocByID("users", user.uid)
         }
+
+        showElemets(userData);
     } catch (error) {
         alert("Erro ao obter dados do usuario")
         console.log("Erro para obter dados e verificar cargos")
@@ -28,21 +29,26 @@ function getCachedUserData(userId)
 
 function showElemets(userData) 
 {
-    if (userData.role == "Administrador") 
+    if (userData.role == "Usuario") 
+    {
+        const elements = document.getElementsByClassName("admin-only");
+        for (let i = 0; i < elements.length; i++) 
+        {
+            elements[i].style.display = "block";
+        }
+    }  
+    else if (userData.role !== "Administrador") 
     {
         let elements = document.getElementsByClassName("admin-only");
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].style.display = "block";
+        for (let i = 0; i < elements.length; i++) 
+        {
+            elements[i].style.display = "none";
         }
         
         elements = document.getElementsByClassName("user-only");
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].style.display = "block";
+        for (let i = 0; i < elements.length; i++) 
+        {
+            elements[i].style.display = "none";
         }
-    } else if (userData.role == "Usuario") {
-        const elements = document.getElementsByClassName("user-only");
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].style.display = "block";
-        }
-    }   
+    }
 }

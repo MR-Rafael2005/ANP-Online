@@ -27,6 +27,7 @@
     <script src="/scripts/fireCRUD.js"></script>
     
     <script type="module" src="/scripts/blockers/guard.js"></script>
+    <script type="module" src="/scripts/blockers/roleGuard.js"></script>
 </head>
 
 <body id="page-top">
@@ -76,9 +77,9 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Geral</h6>
-                        <a class="collapse-item" href="login.html">Ver Todas</a>
-                        <a class="collapse-item" href="login.html">Criar</a>
-                        <a class="collapse-item" href="register.html">Desempenho</a>
+                        <a class="collapse-item" href="./groups/index.html">Ver Todas</a>
+                        <a class="collapse-item" href="./groups/create.html">Criar</a>
+                        <a class="collapse-item" href="./groups/reports.html">Desempenho</a>
                     </div>
                 </div>
             </li>
@@ -93,9 +94,9 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Geral</h6>
-                        <a class="collapse-item" href="login.html">Ver Todos</a>
-                        <a class="collapse-item" href="login.html">Ver por Turma</a>
-                        <a class="collapse-item" href="register.html">Adicionar</a>
+                        <a class="collapse-item" href="./students/index.html">Ver Todos</a>
+                        <a class="collapse-item" href="./students/byGroup.html">Ver por Turma</a>
+                        <a class="collapse-item" href="./students/create.html">Adicionar</a>
                     </div>
                 </div>
             </li>
@@ -110,9 +111,9 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Geral</h6>
-                        <a class="collapse-item" href="login.html">Ver Ocorrências</a>
-                        <a class="collapse-item" href="login.html">Adicionar Ocorrências</a>
-                        <a class="collapse-item" href="register.html">Ver Turmas</a>
+                        <a class="collapse-item" href="./rac/index.html">Ver Ocorrências</a>
+                        <a class="collapse-item" href="./rac/create.html">Adicionar Ocorrências</a>
+                        <a class="collapse-item" href="./rac/groups.html">Ver Turmas</a>
                     </div>
                 </div>
             </li>
@@ -134,24 +135,31 @@
             </li>
                 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Desempenho</span>
                 </a>
+            </li> -->
+
+            <li class="nav-item">
+                <a class="nav-link" href="./notifications.html">    
+                    <i class="fas fa-fw fa-bell"></i>
+                    <span>Notificações</span>
+                </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">    
+                <a class="nav-link" href="./notifications.html">    
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Permissões</span>
+                    <span>Gerenciar Notificações</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Limites</span>
+                    <span>Gerenciamento</span>
                 </a>
             </li>
             <!-- Divider -->
@@ -180,7 +188,7 @@
                     </button>
 
                     <!-- Left Side - New RAC Button -->
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav user-only">
                         <li class="nav-item d-flex align-items-center">
                             <a href="/pages/rac/newRAC.html" class="btn btn-danger btn-icon-split btn-lg btn-lg-lg text-white-50">
                                 <span class="icon text-white-50">
@@ -197,7 +205,7 @@
 
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
+                        <li class="nav-item dropdown no-arrow mx-1 user-only">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
@@ -294,14 +302,14 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
-                                <a class="dropdown-item" href="./editProfile.html">
+                                <a class="dropdown-item" href="./user/editProfile.html">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Editar Perfil
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Registro de Atividades
-                                </a>
+                                </a> -->
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

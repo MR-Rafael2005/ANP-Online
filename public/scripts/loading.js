@@ -59,10 +59,15 @@ function showLoading()
 }
 
 function hideLoading() {
-    const loadingElements = document.getElementsByClassName('loading');
+    let loadingElements = document.getElementsByClassName('loading');
     
     for (let i = 0; i < loadingElements.length; i++) 
     {
         loadingElements[i].remove();
+    }
+
+    loadingElements = document.getElementById('loading');
+    if (loadingElements) {
+        loadingElements.remove();
     }
 }
