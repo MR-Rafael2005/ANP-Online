@@ -9,6 +9,7 @@ const form = {
     userArea: () => document.getElementById('userArea')
 }
 
+//Validação de email
 function validEmail() 
 {
     const email = form.email().value;
@@ -21,6 +22,7 @@ function validEmail()
         }
     }
     
+    //Verificação de formato de email por mascara regex
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!re.test(email)) 
     {
@@ -39,6 +41,8 @@ function validEmail()
     return re.test(String(email).toLowerCase());
 }
 
+//Validação de nome de usuário
+//Nome deve ter pelo menos 3 caracteres
 function validName() 
 {
     const username = form.username().value;
@@ -68,6 +72,8 @@ function validName()
     return true;
 }
 
+//Validação de senha
+//Senha deve ter pelo menos 6 caracteres
 function validatePassword() 
 {
     validateRePass();
@@ -99,6 +105,7 @@ function validatePassword()
     return true;
 }
 
+//Validação de confirmação de senha
 function validateRePass() 
 {
     const password = form.password().value;
@@ -123,6 +130,8 @@ function validateRePass()
     return true;
 }
 
+
+//Validação de foto do usuário 
 function validatePhoto() 
 {
     const userPhoto = form.userPhoto().value;
