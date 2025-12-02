@@ -1,7 +1,9 @@
 Tarefas:
 -Cadastro [X]
--Login []
--Pagina principal []
+-Login [X]
+-Perfil []
+-Edição Usuario []
+-Pagina principal [X]
 -Anuncios []
 -Notificações(Por email tbm) []
 -Turmas []
@@ -10,7 +12,6 @@ Tarefas:
 -Ocorrencias []
 
 -Cores:
-Verde:
 #46e44c
 #3eca43
 #37b13b
@@ -27,12 +28,13 @@ Cargos:
 -Usuario
 -Ingressante
 
-Database:
--users
+PARA RESOLVER:
+- O firebase não disponibiliza mais storage, fotos serão salvas em base64 [Resolvido]
 
-O firebase não disponibiliza mais storage, fotos serão salvas em base64
+- Para expandir o projeto devo criar um arquivo js que importe um html com navbar/rodapé/barra laretal e etc, tornará o projeto mais "expandivel", como fazer:
+fetch("arquivo_com.html").then(res => res.text()).then(data => document.getElementById('navbar-include').innerHTML = data)
 
-Usar Apache Cordova/PhoneGap para fazer o apk
+- Usar Apache Cordova/PhoneGap para fazer o apk
 
 EMAIL FINAL: 23247754@prof.ce.gov.br (Atualmente esta no meu email pessoal)
 

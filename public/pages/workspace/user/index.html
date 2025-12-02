@@ -360,64 +360,65 @@
                 <!-- End of Topbar -->
                
 
-            <div class="cover-container d-flex p-3 mx-auto flex-column flex-grow-1" style="background-color: #1f6522 !important; width: 60em; height: auto; margin-top: 5vh; border-radius: 10px;  border-color: #103311; border-style: solid; border-width: 2px;">
-                <!-- Page Heading -->
-                <form onsubmit="createUser(); return false;">
-                    <h1 class="h3 mb-4 text-white">Perfil</h1>
-                    <div class="mb-3">
-                        <label for="emailLogin" class="form-label">Email</label>
-                        <input type="email" onchange="validateForm()" oninput="validEmail()" class="form-control" id="emailLogin" aria-describedby="emailLoginHelp" placeholder="Digite seu email" required>
+                <div class="cover-container d-flex p-2 mx-auto flex-column flex-grow-1" style="background-color: #1f6522 !important; width: 65vw; height: auto; margin-top: 5vh; border-radius: 10px;  border-color: #103311; border-style: solid; border-width: 2px;">
+                    <!-- Page Heading -->
+                    <div class="container py-4" id="profileForm">
+                        <form class="row align-items-center justify-content-center" autocomplete="off">
+                            <!-- Dados do perfil à esquerda -->
+                            <div class="col-lg-8 col-md-7 mb-4 mb-md-0">
+                                <div class="p-0 rounded">
+                                    <div class="form-group mb-4">
+                                        <label for="profileName" class="font-weight-bold text-white" style="font-size:1.5rem;">Nome</label>
+                                        <input type="text" class="form-control form-control-lg" id="profileName" value="Nome do Usuário" style="font-size:1.3rem;" readonly>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="profileEmail" class="font-weight-bold text-white" style="font-size:1.2rem;">Email</label>
+                                        <input type="email" class="form-control form-control-lg" id="profileEmail" value="email@exemplo.com" style="font-size:1.1rem;">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="profileArea" class="font-weight-bold text-white" style="font-size:1.2rem;">Área de Atuação</label>
+                                        <input type="text" class="form-control form-control-lg" id="profileArea" value="Outro" style="font-size:1.1rem;">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="profileRole" class="font-weight-bold text-white" style="font-size:1.2rem;">Cargo</label>
+                                        <input type="text" class="form-control form-control-lg" id="profileRole" value="Ingressante" style="font-size:1.1rem;">
+                                    </div>
+                                    <div class="form-row mb-3">
+                                        <div class="form-group col-md-6">
+                                            <label for="profileCreated" class="font-weight-bold text-white">Data de Cadastro</label>
+                                            <input type="text" class="form-control" id="profileCreated" value="01/01/2024" readonly>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="profileLastLogin" class="font-weight-bold text-white">Último Acesso</label>
+                                            <input type="text" class="form-control" id="profileLastLogin" value="02/12/2025" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 text-left">
+                                        <a href="./editProfile.html">
+                                            <button type="button" class="btn btn-primary btn-lg px-4"><i class="fas fa-pencil mr-4"></i>Editar</button>
+                                        </a>
+                                    </div>
+                                    <!-- <div class="mt-3 text-left">
+                                        <button type="submit" class="btn btn-success btn-lg px-4"><i class="fas fa-save"></i> Salvar Alterações</button>
+                                        <button type="button" class="btn btn-outline-secondary btn-lg px-4 ml-2"><i class="fas fa-undo"></i> Cancelar</button>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <!-- Foto do usuário à direita -->
+                            <div class="col-lg-4 col-md-5 text-center mt-4 mt-md-0">
+                                <div class="p-3 bg-white rounded d-inline-block">
+                                    <img src="../../../assets/userDefault.png" class="rounded-circle img-thumbnail shadow" alt="Foto do usuário" style="width: 180px; height: 180px; object-fit: cover;">
+                                    <!-- <div class="mt-3">
+                                        <button type="button" class="btn btn-outline-primary btn-sm"><i class="fas fa-upload"></i> Alterar Foto</button>
+                                    </div> -->
+                                    <div class="mt-3">
+                                        <input type="text" class="form-control form-control-lg" id="profileUsername" value="Foto de Perfil" style="font-size:1.1rem; text-align: center;" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Nome</label>
-                        <input type="text" onchange="validateForm()" oninput="validName()" class="form-control" id="username" placeholder="Digite seu nome" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="passwordLogin" class="form-label">Senha</label>
-                        <input type="password" onchange="validateForm()" oninput="validatePassword()" class="form-control" id="passwordLogin" placeholder="Digite sua senha" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirmar Senha</label>
-                        <input type="password" onchange="validateForm()" oninput="validateRePass()" class="form-control" id="confirmPassword" placeholder="Confirme sua senha" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="userArea" class="form-label text-white">Área de Atuação</label>
-                        <select class="form-select" id="userArea" >
-                            <option value="">Selecione uma área</option>
-                            <option value="Matemática">Matemática</option>
-                            <option value="Português">Português</option>
-                            <option value="História">História</option>
-                            <option value="Geografia">Geografia</option>
-                            <option value="Ciências">Ciências</option>
-                            <option value="Física">Física</option>
-                            <option value="Química">Química</option>
-                            <option value="Biologia">Biologia</option>
-                            <option value="Inglês">Inglês</option>
-                            <option value="Educação Física">Educação Física</option>
-                            <option value="Artes">Artes</option>
-                            <option value="Filosofia">Filosofia</option>
-                            <option value="Sociologia">Sociologia</option>
-                            <option value="Coordenação">Coordenação</option>
-                            <option value="Outro">Outro</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <img id="profilePreview" src="/assets/userDefaultW.png" alt="Pré-visualização do Perfil" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 2px solid #103311;">
-                    </div>
-                    
-                    <div class="d-flex justify-content-between">    
-                        <button type="button" class="btn btn-secondary" onclick="window.location.href='./'">Voltar</button>
-                        <button type="submit" id="submitButton" class="btn btn-primary" disabled="true">Editar</button>
-                    </div>
-                </form>
-            </div>
-                <!-- /.container-fluid -->
-
+                </div>
             </div>
             <!-- End of Main Content -->
 

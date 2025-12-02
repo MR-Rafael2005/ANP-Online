@@ -1,0 +1,1 @@
+fetch("pages/_include/leftNavbar.html").then(res => res.text()).then(data => document.getElementById('left-navbar-include').innerHTML = data)
