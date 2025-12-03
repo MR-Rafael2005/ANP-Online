@@ -36,16 +36,9 @@
                     </div>
                 </a>
                 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                
-                <div class="collapse navbar-collapse align-middle" id="navbarNavDropdown">
-                    <ul class="navbar-nav ms-lg-auto align-middle" style="font-size: x-large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                        <li class="nav-item">
-                            <a class="nav-link text-white disabled" href="#anuncios">Pagina de Cadastro</a>
-                        </li>
+                <ul class="navbar-nav ms-lg-auto align-middle" style="font-size: x-large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                    <li class="nav-item">
+                        <a class="nav-link text-white disabled" href="#">Pagina de Cadastro</a>
                     </li>
                 </ul>
             </div>
@@ -54,75 +47,79 @@
     </div>
     
     <!-- MAIN CONTENT -->
-    <div class="cover-container d-flex p-3 mx-auto flex-column" style="background-color: #1f6522 !important; width: 30em; height: auto; margin-top: 15vh; border-radius: 10px;  border-color: #103311; border-style: solid; border-width: 2px;">
-        <form onsubmit="createUser(); return false;">
-            <div class="mb-3">
-                <label for="emailLogin" class="form-label">Email</label>
-                <input type="email" onchange="validateForm()" oninput="validEmail()" class="form-control" id="emailLogin" aria-describedby="emailLoginHelp" placeholder="Digite seu email" required>
-                <div id="emailError" class="form-text text-danger" style="display: none;">Email inválido.</div>
-            </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="d-flex p-3 mx-auto flex-column col-10 col-md-6 col-lg-4" style="background-color: #1f6522 !important; height: auto; margin-top: 20vh; border-radius: 10px;  border-color: #103311; border-style: solid; border-width: 2px;">
+                <form onsubmit="createUser(); return false;">
+                    <div class="mb-3">
+                        <label for="emailLogin" class="form-label">Email</label>
+                        <input type="email" onchange="validateForm()" oninput="validEmail()" class="form-control" id="emailLogin" aria-describedby="emailLoginHelp" placeholder="Digite seu email" required>
+                        <div id="emailError" class="form-text text-danger" style="display: none;">Email inválido.</div>
+                    </div>
             
-            <div class="mb-3">
-                <label for="name" class="form-label">Nome</label>
-                <input type="text" onchange="validateForm()" oninput="validName()" class="form-control" id="username" placeholder="Digite seu nome" required>
-                <div id="nameError" class="form-text text-danger" style="display: none;">Nome inválido.</div>
-            </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nome</label>
+                        <input type="text" onchange="validateForm()" oninput="validName()" class="form-control" id="username" placeholder="Digite seu nome" required>
+                        <div id="nameError" class="form-text text-danger" style="display: none;">Nome inválido.</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="passwordLogin" class="form-label">Senha</label>
+                        <input type="password" onchange="validateForm()" oninput="validatePassword()" class="form-control" id="passwordLogin" placeholder="Digite sua senha" required>
+                        <div id="passwordError" class="form-text text-danger" style="display: none;">A senha deve ter pelo menos 6 caracteres.</div>
+                    </div>
 
-            <div class="mb-3">
-                <label for="passwordLogin" class="form-label">Senha</label>
-                <input type="password" onchange="validateForm()" oninput="validatePassword()" class="form-control" id="passwordLogin" placeholder="Digite sua senha" required>
-                <div id="passwordError" class="form-text text-danger" style="display: none;">A senha deve ter pelo menos 6 caracteres.</div>
-            </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirmar Senha</label>
+                        <input type="password" onchange="validateForm()" oninput="validateRePass()" class="form-control" id="confirmPassword" placeholder="Confirme sua senha" required>
+                        <div id="rePassError" class="form-text text-danger" style="display: none;">As senhas não coincidem.</div>
+                    </div>
 
-            <div class="mb-3">
-                <label for="confirmPassword" class="form-label">Confirmar Senha</label>
-                <input type="password" onchange="validateForm()" oninput="validateRePass()" class="form-control" id="confirmPassword" placeholder="Confirme sua senha" required>
-                <div id="rePassError" class="form-text text-danger" style="display: none;">As senhas não coincidem.</div>
+                    <div class="mb-3">
+                        <label for="userArea" class="form-label text-white">Área de Atuação</label>
+                        <select class="form-select" id="userArea" required>
+                            <option value="">Selecione uma área</option>
+                            <option value="Matemática">Matemática</option>
+                            <option value="Português">Português</option>
+                            <option value="História">História</option>
+                            <option value="Geografia">Geografia</option>
+                            <option value="Ciências">Ciências</option>
+                            <option value="Física">Física</option>
+                            <option value="Química">Química</option>
+                            <option value="Biologia">Biologia</option>
+                            <option value="Inglês">Inglês</option>
+                            <option value="Educação Física">Educação Física</option>
+                            <option value="Artes">Artes</option>
+                            <option value="Filosofia">Filosofia</option>
+                            <option value="Sociologia">Sociologia</option>
+                            <option value="Coordenação">Coordenação</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="userPhoto" class="form-label text-white">Foto de Perfil (Opcional)</label>
+                        <input type="file" onchange="photoChange()" class="form-control" id="userPhoto" accept="image/*">
+                        <div class="form-text text-light">Formatos aceitos: JPG, JPEG e PNG</div>
+                        <div id="photoError" class="form-text text-danger" style="display: none;">Formato de foto inválido. Use JPG, JPEG ou PNG.</div>
+                        
+                        <!-- Preview da foto -->
+                        <div class="mt-2 text-center">
+                            <img id="photoPreview" src="" alt="Preview" class="img-thumbnail" style="max-width: 150px; display: none;">
+                        </div>
+                    </div>
+                    
+                    <input type="hidden" id="userRole" value="Ingressante">
+                    
+                    <div class="d-flex justify-content-between">    
+                        <a href="./index.html">
+                            <button type="button" class="btn btn-secondary">Voltar</button>
+                        </a>
+                        <button type="submit" id="submitButton" class="btn btn-primary" disabled="true">Cadastrar</button>
+                    </div>
+                </form>
             </div>
-
-            <div class="mb-3">
-                <label for="userArea" class="form-label text-white">Área de Atuação</label>
-                <select class="form-select" id="userArea" required>
-                    <option value="">Selecione uma área</option>
-                    <option value="Matemática">Matemática</option>
-                    <option value="Português">Português</option>
-                    <option value="História">História</option>
-                    <option value="Geografia">Geografia</option>
-                    <option value="Ciências">Ciências</option>
-                    <option value="Física">Física</option>
-                    <option value="Química">Química</option>
-                    <option value="Biologia">Biologia</option>
-                    <option value="Inglês">Inglês</option>
-                    <option value="Educação Física">Educação Física</option>
-                    <option value="Artes">Artes</option>
-                    <option value="Filosofia">Filosofia</option>
-                    <option value="Sociologia">Sociologia</option>
-                    <option value="Coordenação">Coordenação</option>
-                    <option value="Outro">Outro</option>
-                </select>
-            </div>
-
-            <div class="mb-3">
-                <label for="userPhoto" class="form-label text-white">Foto de Perfil (Opcional)</label>
-                <input type="file" onchange="photoChange()" class="form-control" id="userPhoto" accept="image/*">
-                <div class="form-text text-light">Formatos aceitos: JPG, JPEG e PNG</div>
-                <div id="photoError" class="form-text text-danger" style="display: none;">Formato de foto inválido. Use JPG, JPEG ou PNG.</div>
-                
-                <!-- Preview da foto -->
-                <div class="mt-2 text-center">
-                    <img id="photoPreview" src="" alt="Preview" class="img-thumbnail" style="max-width: 150px; display: none;">
-                </div>
-            </div>
-
-            <input type="hidden" id="userRole" value="Ingressante">
-
-            <div class="d-flex justify-content-between">    
-                <a href="./index.html">
-                    <button type="button" class="btn btn-secondary">Voltar</button>
-                </a>
-                <button type="submit" id="submitButton" class="btn btn-primary" disabled="true">Cadastrar</button>
-            </div>
-        </form>
+        </div>
     </div>
     
     <script src="/scripts/fireCRUD.js"></script>

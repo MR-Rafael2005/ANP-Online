@@ -1,0 +1,119 @@
+<!-- Topbar -->
+<nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background-color: #174c19;">
+
+    <!-- Sidebar Toggle (Topbar) -->
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+    </button>
+
+    <!-- Left Side - New RAC Button -->
+    <ul class="navbar-nav user-only">
+        <li class="nav-item d-flex align-items-center">
+            <a href="/pages/rac/newRAC.html" class="btn btn-danger btn-icon-split btn-lg btn-lg-lg text-white-50">
+                <span class="icon text-white-50">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span class="text">
+                    <span class="d-none d-lg-inline">Nova Ocorrencia</span>
+                    <span class="d-lg-none d-none d-sm-inline d-sm-none">RAC</span>
+                    <span class="d-sm-none">RAC</span>
+                </span>
+            </a>
+        </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+        <!-- Nav Item - Alerts -->
+        <li class="nav-item dropdown no-arrow mx-1 user-only">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter">3+</span>
+            </a>
+            <!-- Dropdown - Alerts -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                    Notificações
+                </h6>
+                <div id="notifications-area">
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                            <div class="icon-circle bg-danger">
+                                <i class="fas fa-info text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="small text-gray-500">Janeiro 01, 2025, 08:43</div>
+                            <span class="font-weight-bold">Aluno Ilder Rafael Damasceno Ponte da Costa sofreu uma ocorrência Gravíssima</span>
+                        </div>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                            <div class="icon-circle bg-warning">
+                                <i class="fas fa-info text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="small text-gray-500">Janeiro 01, 2025, 08:43</div>
+                            <span class="font-weight-bold">Aluno Jacinto Pinto da Costa sofreu uma ocorrência Moderada</span>
+                        </div>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                            <div class="icon-circle bg-primary">
+                                <i class="fas fa-info text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="small text-gray-500">Janeiro 01, 2025, 08:43</div>
+                            <span class="font-weight-bold">Aluno Tommy Lipica da Silva sofreu uma ocorrência Leve</span>
+                        </div>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                            <div class="icon-circle bg-danger">
+                                <i class="fas fa-exclamation-triangle text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="small text-gray-500">Janeiro 01, 2025, 08:43</div>
+                            <span class="font-weight-bold">Aluno Ilder Rafael Damasceno Ponte da Costa sofreu 5 ocorrências</span>
+                        </div>
+                    </a>
+                </div>
+                <a class="dropdown-item text-center small text-gray-350" href="./notifications.html">Ver todas as notificações</a>
+            </div>
+        </li>
+        
+        <div class="topbar-divider d-none d-sm-block"></div>
+
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small user-name-place">Usuario</span>
+                <img class="img-profile rounded-circle user-photo-place"
+                    src="/assets/userDefaultW.png">
+                </a>
+                <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="./user/index.html">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Perfil
+                </a>
+                <a class="dropdown-item" href="./user/editProfile.html">
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Editar Perfil
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Sair
+                </a>
+            </div>
+        </li>
+    </ul>
+</nav>

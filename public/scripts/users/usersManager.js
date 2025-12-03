@@ -9,13 +9,13 @@ function makeLogin() {
     .then((userCredential) => {
         console.log("Login successful:", userCredential);
         window.location.href = "/pages/workspace/index.html";
-        hideLoading();
+        // hideLoading();
     }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error("Error during login:", errorCode, errorMessage);
         alert("Erro ao fazer login: senha ou email inválidos");
-        hideLoading();
+        // hideLoading();
     });
 }
 
@@ -85,3 +85,10 @@ function validadeRePass() {
     errorElement.style.display = "none";
     return true;
 }
+
+// document.addEventListener("DOMContentLoaded", () => {
+//     document.getElementById("formLogin").addEventListener("submit", (event) => {
+//         event.preventDefault();
+//         makeLogin();
+//     });
+// });

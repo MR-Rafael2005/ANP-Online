@@ -1,0 +1,131 @@
+<!-- Sidebar -->
+<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(45deg, #174c19, #277f2a);">
+
+    <!-- Sidebar - Tittle -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <img class="sidebar-brand-icon" src="/assets/anpicont.png" alt="Logo" style="width: auto; height: auto;">
+        <div class="sidebar-brand-text mx-3">ANP ONLINE<sup>1.0</sup></div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Geral</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Área Escolar
+    </div>
+
+    <li class="nav-item active">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTurmas" aria-expanded="false"
+            aria-controls="collapseTurmas">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Turmas</span>
+        </a>
+        <div id="collapseTurmas" class="collapse" aria-labelledby="headingTurmas"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Geral</h6>
+                <a class="collapse-item" href="./groups/index.html">Ver Todas</a>
+                <a class="collapse-item" href="./groups/create.html">Criar</a>
+                <a class="collapse-item" href="./groups/reports.html">Desempenho</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item active">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAlunos" aria-expanded="false"
+            aria-controls="collapseAlunos">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Alunos</span>
+        </a>
+        <div id="collapseAlunos" class="collapse" aria-labelledby="headingAlunos"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Geral</h6>
+                <a class="collapse-item" href="./students/index.html">Ver Todos</a>
+                <a class="collapse-item" href="./students/byGroup.html">Ver por Turma</a>
+                <a class="collapse-item" href="./students/create.html">Adicionar</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item active">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRAC" aria-expanded="false"
+            aria-controls="collapseRAC">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>RAC</span>
+        </a>
+        <div id="collapseRAC" class="collapse" aria-labelledby="headingRAC"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Geral</h6>
+                <a class="collapse-item" href="./rac/index.html">Ver Ocorrências</a>
+                <a class="collapse-item" href="./rac/create.html">Adicionar Ocorrências</a>
+                <a class="collapse-item" href="./rac/groups.html">Ver Turmas</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Área Gestão
+    </div>
+    
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Usuários</span>
+        </a>
+    </li>
+        
+    <!-- Nav Item - Charts -->
+    <!-- <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Desempenho</span>
+        </a>
+    </li> -->
+
+    <li class="nav-item">
+        <a class="nav-link" href="./notifications.html">    
+            <i class="fas fa-fw fa-bell"></i>
+            <span>Notificações</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="./notifications.html">    
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Gerenciar Notificações</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Gerenciamento</span>
+        </a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+     <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+</ul>
+<!-- End of Sidebar -->
