@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,139 +15,32 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/startbootstrap-sb-admin-2@4.1.4/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <script src="/scripts/loading.js"></script>
+    
+    <!-- FIREBASE -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/12.0.0/firebase-app-compat.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore-compat.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/12.0.0/firebase-auth-compat.js"></script>
+    <script type="module" src="/scripts/firebaseConfig.js"></script>
+    <script src="/scripts/fireCRUD.js"></script>
+    
+    <script type="module" src="/scripts/blockers/guard.js"></script>
 </head>
 
 <body id="page-top">
 
+    <!-- Loading -->
+    <div id="loading" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #174c19; display: flex; align-items: center; justify-content: center; z-index: 9999;">
+        <div class="spinner-border text-light"></div>
+        <span class="text-light ms-3">Carregando...</span>
+    </div>
+    
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
-        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(45deg, #174c19, #277f2a);">
-
-            <!-- Sidebar - Tittle -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <img class="sidebar-brand-icon" src="../../assets/anpicont.png" alt="Logo" style="width: auto; height: auto;">
-                <div class="sidebar-brand-text mx-3">ANP ONLINE<sup>1.0</sup></div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Geral</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Área Escolar
-            </div>
-
-            <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTurmas" aria-expanded="false"
-                    aria-controls="collapseTurmas">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Turmas</span>
-                </a>
-                <div id="collapseTurmas" class="collapse" aria-labelledby="headingTurmas"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Geral</h6>
-                        <a class="collapse-item" href="login.html">Ver Todas</a>
-                        <a class="collapse-item" href="login.html">Criar</a>
-                        <a class="collapse-item" href="register.html">Desempenho</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAlunos" aria-expanded="false"
-                    aria-controls="collapseAlunos">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Alunos</span>
-                </a>
-                <div id="collapseAlunos" class="collapse" aria-labelledby="headingAlunos"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Geral</h6>
-                        <a class="collapse-item" href="login.html">Ver Todos</a>
-                        <a class="collapse-item" href="login.html">Ver por Turma</a>
-                        <a class="collapse-item" href="register.html">Adicionar</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRAC" aria-expanded="false"
-                    aria-controls="collapseRAC">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>RAC</span>
-                </a>
-                <div id="collapseRAC" class="collapse" aria-labelledby="headingRAC"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Geral</h6>
-                        <a class="collapse-item" href="login.html">Ver Ocorrências</a>
-                        <a class="collapse-item" href="login.html">Adicionar Ocorrências</a>
-                        <a class="collapse-item" href="register.html">Ver Turmas</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Área Gestão
-            </div>
-            
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Usuários</span>
-                </a>
-            </li>
-                
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Desempenho</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">    
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Permissões</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Limites</span>
-                </a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-        </ul>
-        <!-- End of Sidebar -->
-
+        <div id="left-navbar-include"></div>
+       
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -156,280 +48,62 @@
             <div id="content" style="background: linear-gradient(45deg, #174c19, #277f2a);">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background-color: #174c19;">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Buscar por..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ilder Rafael</span>
-                                <img class="img-profile rounded-circle"
-                                    src="../../assets/userDefaultW.png">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Perfil
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Configurações
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Registro de Atividades
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Sair
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
-
-                </nav>
-                <!-- End of Topbar -->
+                <div id="top-navbar-include"></div>
                
-
-            <div class="cover-container d-flex p-3 mx-auto flex-column flex-grow-1" style="background-color: #1f6522 !important; width: 60em; height: auto; margin-top: 5vh; border-radius: 10px;  border-color: #103311; border-style: solid; border-width: 2px;">
-                <!-- Page Heading -->
-                <form onsubmit="createUser(); return false;">
-                    <h1 class="h3 mb-4 text-white">Editar Perfil</h1>
-                    <div class="mb-3">
-                        <label for="emailLogin" class="form-label">Email</label>
-                        <input type="email" onchange="validateForm()" oninput="validEmail()" class="form-control" id="emailLogin" aria-describedby="emailLoginHelp" placeholder="Digite seu email" required>
-                        <div id="emailError" class="form-text text-danger" style="display: none;">Email inválido.</div>
+                <div class="cover-container d-flex p-2 mx-auto flex-column flex-grow-1" style="background-color: #1f6522 !important; width: 65vw; height: auto; margin-top: 5vh; border-radius: 10px;  border-color: #103311; border-style: solid; border-width: 2px;">
+                    <!-- Page Heading -->
+                    <div class="container py-4" id="profileForm">
+                        <form class="row align-items-center justify-content-center" autocomplete="off" onsubmit="saveChanges(); return false;">
+                            <!-- Dados do perfil à esquerda -->
+                            <div class="col-lg-8 col-md-7 mb-4 mb-md-0">
+                                <div class="p-0 rounded">
+                                    <div class="form-group mb-4">
+                                        <label for="profileName" class="font-weight-bold text-white" style="font-size:1.5rem;">Nome</label>
+                                        <input type="text" class="form-control form-control-lg" id="profileName" value="Nome do Usuário" style="font-size:1.3rem;" required>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="profileEmail" class="font-weight-bold text-white" style="font-size:1.2rem;">Email</label>
+                                        <input type="email" class="form-control form-control-lg" id="profileEmail" value="email@exemplo.com" style="font-size:1.1rem;" required>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="profileArea" class="font-weight-bold text-white" style="font-size:1.2rem;">Área de Atuação</label>
+                                        <select class="form-control form-control-lg" id="userArea" required>
+                                            <option value="">Selecione uma área</option>
+                                            <option value="Matemática">Matemática</option>
+                                            <option value="Português">Português</option>
+                                            <option value="História">História</option>
+                                            <option value="Geografia">Geografia</option>
+                                            <option value="Ciências">Ciências</option>
+                                            <option value="Física">Física</option>
+                                            <option value="Química">Química</option>
+                                            <option value="Biologia">Biologia</option>
+                                            <option value="Inglês">Inglês</option>
+                                            <option value="Educação Física">Educação Física</option>
+                                            <option value="Artes">Artes</option>
+                                            <option value="Filosofia">Filosofia</option>
+                                            <option value="Sociologia">Sociologia</option>
+                                            <option value="Coordenação">Coordenação</option>
+                                            <option value="Outro">Outro</option>
+                                        </select>
+                                    </div>
+                                    <div class="mt-3 text-right">
+                                        <button type="submit" class="btn btn-success btn-lg px-4"><i class="fas fa-save"></i> Salvar Alterações</button>
+                                        <button type="button" class="btn btn-outline-secondary btn-lg px-4 ml-2" onclick="window.location.href='./'"><i class="fas fa-undo"></i> Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Foto do usuário à direita -->
+                            <div class="col-lg-4 col-md-5 text-center mt-4 mt-md-0">
+                                <div class="p-3 bg-white rounded d-inline-block">
+                                    <img src="../../../assets/userDefault.png" class="rounded-circle img-thumbnail shadow" alt="Foto do usuário" style="width: 180px; height: 180px; object-fit: cover;">
+                                    <div class="mt-3">
+                                        <button type="button" class="btn btn-outline-primary btn-sm"><i class="fas fa-upload"></i> Alterar Foto</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Nome</label>
-                        <input type="text" onchange="validateForm()" oninput="validName()" class="form-control" id="username" placeholder="Digite seu nome" required>
-                        <div id="nameError" class="form-text text-danger" style="display: none;">Nome inválido.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="passwordLogin" class="form-label">Senha</label>
-                        <input type="password" onchange="validateForm()" oninput="validatePassword()" class="form-control" id="passwordLogin" placeholder="Digite sua senha" required>
-                        <div id="passwordError" class="form-text text-danger" style="display: none;">A senha deve ter pelo menos 6 caracteres.</div>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirmar Senha</label>
-                        <input type="password" onchange="validateForm()" oninput="validateRePass()" class="form-control" id="confirmPassword" placeholder="Confirme sua senha" required>
-                        <div id="rePassError" class="form-text text-danger" style="display: none;">As senhas não coincidem.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="userArea" class="form-label text-white">Área de Atuação</label>
-                        <select class="form-select" id="userArea" required>
-                            <option value="">Selecione uma área</option>
-                            <option value="Matemática">Matemática</option>
-                            <option value="Português">Português</option>
-                            <option value="História">História</option>
-                            <option value="Geografia">Geografia</option>
-                            <option value="Ciências">Ciências</option>
-                            <option value="Física">Física</option>
-                            <option value="Química">Química</option>
-                            <option value="Biologia">Biologia</option>
-                            <option value="Inglês">Inglês</option>
-                            <option value="Educação Física">Educação Física</option>
-                            <option value="Artes">Artes</option>
-                            <option value="Filosofia">Filosofia</option>
-                            <option value="Sociologia">Sociologia</option>
-                            <option value="Coordenação">Coordenação</option>
-                            <option value="Outro">Outro</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="userPhoto" class="form-label text-white">Foto de Perfil (Opcional)</label>
-                        <input type="file" onchange="photoChange()" class="form-control" id="userPhoto" accept="image/*">
-                        <div class="form-text text-light">Formatos aceitos: JPG, JPEG e PNG</div>
-                        <div id="photoError" class="form-text text-danger" style="display: none;">Formato de foto inválido. Use JPG, JPEG ou PNG.</div>
-                        
-                        <!-- Preview da foto -->
-                        <div class="mt-2 text-center">
-                            <img id="photoPreview" src="" alt="Preview" class="img-thumbnail" style="max-width: 150px; display: none;">
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex justify-content-between">    
-                        <button type="button" class="btn btn-secondary" onclick="window.location.href='./'">Voltar</button>
-                        <button type="submit" id="submitButton" class="btn btn-primary" disabled="true">Editar</button>
-                    </div>
-                </form>
-            </div>
-                <!-- /.container-fluid -->
-
+                </div>
             </div>
             <!-- End of Main Content -->
 
@@ -453,33 +127,18 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     
     <!-- SCRIPTS DO TEMPLATE -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/startbootstrap-sb-admin-2@4.1.4/js/sb-admin-2.min.js"></script>
+
+    <!-- OUTROS SCRIPTS -->
+    <script src="/scripts/users/userInfos.js"></script>
+    <script src="/scripts/users/logOut.js"></script>
+    <script src="/scripts/includes/includeNavbars.js"></script>
+    <script src="/scripts/users/editUser.js"></script>
 </body>
 
 </html>

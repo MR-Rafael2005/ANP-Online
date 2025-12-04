@@ -68,7 +68,7 @@ function initializeAllNavbarEvents() {
             }
         });
         
-        console.log("✅ Todos os eventos das navbars inicializados");
+        console.log("Todos os eventos das navbars inicializados");
     }, 100);
 }
 

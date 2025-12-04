@@ -83,7 +83,7 @@
                         </div>
                     </a>
                 </div>
-                <a class="dropdown-item text-center small text-gray-350" href="./notifications.html">Ver todas as notificações</a>
+                <a class="dropdown-item text-center small text-gray-350" href="/pages/workspace/notifications.html">Ver todas as notificações</a>
             </div>
         </li>
         
@@ -100,11 +100,11 @@
                 <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="./user/index.html">
+                <a class="dropdown-item" href="/pages/workspace/user/index.html">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Perfil
                 </a>
-                <a class="dropdown-item" href="./user/editProfile.html">
+                <a class="dropdown-item" href="/pages/workspace/user/editProfile.html">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Editar Perfil
                 </a>
@@ -117,3 +117,21 @@
         </li>
     </ul>
 </nav>
+
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Vai sair?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Selecione "Sair" abaixo se estiver pronto para encerrar sua sessão atual.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <button class="btn btn-danger" onclick="loginOut();">Sair</button>
+            </div>
+        </div>
+    </div>
+</div>
