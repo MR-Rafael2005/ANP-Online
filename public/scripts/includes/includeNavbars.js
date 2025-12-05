@@ -47,12 +47,23 @@ function initializeAllNavbarEvents() {
         const alertsDropdown = document.getElementById('alertsDropdown');
         const userDropdown = document.getElementById('userDropdown');
         
+        // Substituir a seção dos dropdowns por:
         [alertsDropdown, userDropdown].forEach(dropdown => {
             if (dropdown) {
                 dropdown.addEventListener('click', function(e) {
                     e.preventDefault();
+                    e.stopPropagation(); // Impede propagação do evento
+                    
+                    // Fechar outros dropdowns primeiro
+                    document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+                        if (menu !== this.nextElementSibling) {
+                            menu.classList.remove('show');
+                        }
+                    });
+                    
+                    // Toggle do dropdown atual
                     const menu = this.nextElementSibling;
-                    if (menu) {
+                    if (menu && menu.classList.contains('dropdown-menu')) {
                         menu.classList.toggle('show');
                     }
                 });

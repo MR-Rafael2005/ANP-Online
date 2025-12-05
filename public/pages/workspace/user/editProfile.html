@@ -62,12 +62,8 @@
                                         <input type="text" class="form-control form-control-lg" id="profileName" value="Nome do Usuário" style="font-size:1.3rem;" required>
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label for="profileEmail" class="font-weight-bold text-white" style="font-size:1.2rem;">Email</label>
-                                        <input type="email" class="form-control form-control-lg" id="profileEmail" value="email@exemplo.com" style="font-size:1.1rem;" required>
-                                    </div>
-                                    <div class="form-group mb-4">
                                         <label for="profileArea" class="font-weight-bold text-white" style="font-size:1.2rem;">Área de Atuação</label>
-                                        <select class="form-control form-control-lg" id="userArea" required>
+                                        <select class="form-control form-control-lg" id="profileArea" required>
                                             <option value="">Selecione uma área</option>
                                             <option value="Matemática">Matemática</option>
                                             <option value="Português">Português</option>
@@ -93,11 +89,17 @@
                                 </div>
                             </div>
                             <!-- Foto do usuário à direita -->
+                            <!-- Foto do usuário à direita -->
                             <div class="col-lg-4 col-md-5 text-center mt-4 mt-md-0">
                                 <div class="p-3 bg-white rounded d-inline-block">
-                                    <img src="../../../assets/userDefault.png" class="rounded-circle img-thumbnail shadow" alt="Foto do usuário" style="width: 180px; height: 180px; object-fit: cover;">
+                                    <img src="../../../assets/userDefault.png" id="profilePhoto" class="rounded-circle img-thumbnail shadow" alt="Foto do usuário" style="width: 180px; height: 180px; object-fit: cover;">
                                     <div class="mt-3">
-                                        <button type="button" class="btn btn-outline-primary btn-sm"><i class="fas fa-upload"></i> Alterar Foto</button>
+                                        <!-- Input file oculto -->
+                                        <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="handlePhotoChange(event)">
+                                        <!-- Botão que aciona o input -->
+                                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="document.getElementById('photoInput').click()">
+                                            <i class="fas fa-upload"></i> Alterar Foto
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -135,10 +137,12 @@
     <script src="https://cdn.jsdelivr.net/npm/startbootstrap-sb-admin-2@4.1.4/js/sb-admin-2.min.js"></script>
 
     <!-- OUTROS SCRIPTS -->
+    <script src="/scripts/imgConv.js"></script>
     <script src="/scripts/users/userInfos.js"></script>
+    <script type="module" src="/scripts/users/loadProfile.js"></script>
+    <script src="/scripts/users/changeProfile.js"></script>
     <script src="/scripts/users/logOut.js"></script>
     <script src="/scripts/includes/includeNavbars.js"></script>
-    <script src="/scripts/users/editUser.js"></script>
 </body>
 
 </html>

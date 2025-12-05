@@ -69,7 +69,6 @@ function setCacheUserData(userData, userId)
     {
         localStorage.setItem(`user_${userId}`, JSON.stringify(userData));
     }
-
 }
 
 function clearUserCache(userId)

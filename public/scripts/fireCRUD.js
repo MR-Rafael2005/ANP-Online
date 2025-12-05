@@ -64,9 +64,9 @@ async function GetDocByCondition(collection, field, operator, value)
 // #endregion Firestore Read Operations
 
 // #region Firestore Update Operations
-async function UpdateDocById(docId, data)
+async function UpdateDocById(collection, docId, data)
 {
-    return await firebase.firestore().doc(docId).update(data);
+    return await firebase.firestore().collection(collection).doc(docId).update(data);
 }
 
 async function UpdateDocs(collection, updates)
