@@ -31,10 +31,10 @@
 <body id="page-top">
 
     <!-- Loading -->
-    <div id="loading" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #174c19; display: flex; align-items: center; justify-content: center; z-index: 9999;">
+    <!-- <div id="loading" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #174c19; display: flex; align-items: center; justify-content: center; z-index: 9999;">
         <div class="spinner-border text-light"></div>
         <span class="text-light ms-3">Carregando...</span>
-    </div>
+    </div> -->
     
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -51,7 +51,53 @@
                 <div id="top-navbar-include"></div>
                
                 <div class="cover-container d-flex p-2 mx-auto flex-column flex-grow-1" style="background-color: #1f6522 !important; width: 65vw; height: auto; margin-top: 5vh; border-radius: 10px;  border-color: #103311; border-style: solid; border-width: 2px;">
-                   
+                    <main role="main" class="px-3 text-white">
+                        <h1 class="mb-4">Lista de Usuários</h1>
+                        <div id="users-list" class="list-group">
+                            <!-- User items will be dynamically inserted here -->
+                            <!-- Example -->
+                            <style>
+                                /* Muda a cor e arredonda as bordas */
+                                .custom-table {
+                                    border:  2px solid #174c19 ! important;
+                                    border-radius:  8px !important;
+                                    border-collapse: separate !important;
+                                    border-spacing: 0;
+                                    overflow: hidden;
+                                }
+                                
+                                .custom-table thead th,
+                                .custom-table tbody td {
+                                    border-color: #174c19 !important;
+                                }
+                            </style>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered custom-table text-white">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Email</th>
+                                            <th>Função</th>
+                                            <th>Opções</th>
+                                        </tr>
+                                    </thead>
+                                    <script>confirm("Tem certeza que tem certeza?")</script>
+                                    <tbody id="users-table-body">
+                                        <tr>
+                                            <td>João Silva</td>
+                                            <td>jp@email.com</td>
+                                            <td>Administrador</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary mr-2">Editar</button>
+                                                <button class="btn btn-sm btn-danger">Excluir</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </main>
                 </div>
             </div>
             <!-- End of Main Content -->
